@@ -1,0 +1,1526 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cabinet Avocat | Excelență în Drept</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #1A1A1A;
+            --secondary: #8B7355;
+            --accent: #A0826D;
+            --light: #F8F6F3;
+            --gray: #666666;
+            --white: #FFFFFF;
+            --border: #E5E1DC;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            color: var(--primary);
+            line-height: 1.6;
+            overflow-x: hidden;
+            background: var(--white);
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 40px;
+        }
+
+        .container-narrow {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 40px;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.98);
+            backdrop-filter: blur(20px);
+            z-index: 1000;
+            border-bottom: 1px solid var(--border);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .nav-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 24px 0;
+        }
+
+        .logo {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 26px;
+            font-weight: 600;
+            color: var(--primary);
+            letter-spacing: 0.5px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .logo-icon {
+            width: 32px;
+            height: 32px;
+            stroke: var(--secondary);
+            stroke-width: 1.5;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 48px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--primary);
+            font-weight: 500;
+            font-size: 15px;
+            letter-spacing: 0.3px;
+            transition: color 0.3s ease;
+            position: relative;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 0;
+            width: 0;
+            height: 1px;
+            background: var(--secondary);
+            transition: width 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .nav-links a:hover {
+            color: var(--secondary);
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .cta-nav {
+            background: var(--primary);
+            color: white;
+            padding: 14px 32px;
+            border: none;
+            cursor: pointer;
+            font-weight: 500;
+            font-size: 15px;
+            letter-spacing: 0.3px;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .cta-nav:hover {
+            background: var(--secondary);
+            transform: translateY(-1px);
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            padding-top: 80px;
+            position: relative;
+            background: linear-gradient(to bottom, var(--light) 0%, var(--white) 100%);
+        }
+
+        .hero-grid {
+            display: grid;
+            grid-template-columns: 1.1fr 0.9fr;
+            gap: 80px;
+            align-items: center;
+            padding: 80px 0;
+        }
+
+        .hero-content {
+            opacity: 0;
+            animation: fadeInUp 1.2s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+        }
+
+        .hero-label {
+            font-size: 13px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: var(--secondary);
+            font-weight: 600;
+            margin-bottom: 24px;
+            display: block;
+        }
+
+        .hero h1 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 72px;
+            line-height: 1.15;
+            margin-bottom: 32px;
+            color: var(--primary);
+            font-weight: 400;
+            letter-spacing: -1px;
+        }
+
+        .hero-description {
+            font-size: 20px;
+            line-height: 1.7;
+            color: var(--gray);
+            margin-bottom: 48px;
+            max-width: 580px;
+            font-weight: 300;
+        }
+
+        .hero-actions {
+            display: flex;
+            align-items: center;
+            gap: 24px;
+            margin-bottom: 64px;
+        }
+
+        .cta-primary {
+            background: var(--primary);
+            color: white;
+            padding: 18px 40px;
+            border: 2px solid var(--primary);
+            cursor: pointer;
+            font-weight: 500;
+            font-size: 16px;
+            letter-spacing: 0.3px;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .cta-primary:hover {
+            background: transparent;
+            color: var(--primary);
+        }
+
+        .cta-secondary {
+            color: var(--primary);
+            padding: 18px 40px;
+            border: 2px solid var(--border);
+            cursor: pointer;
+            font-weight: 500;
+            font-size: 16px;
+            letter-spacing: 0.3px;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            text-decoration: none;
+            display: inline-block;
+            background: transparent;
+        }
+
+        .cta-secondary:hover {
+            border-color: var(--primary);
+        }
+
+        .hero-stats {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 48px;
+            padding-top: 48px;
+            border-top: 1px solid var(--border);
+        }
+
+        .stat {
+            text-align: left;
+        }
+
+        .stat-number {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 56px;
+            font-weight: 300;
+            color: var(--secondary);
+            display: block;
+            line-height: 1;
+            margin-bottom: 8px;
+        }
+
+        .stat-label {
+            font-size: 14px;
+            color: var(--gray);
+            letter-spacing: 0.5px;
+            font-weight: 400;
+        }
+
+        .hero-image {
+            position: relative;
+            opacity: 0;
+            animation: fadeIn 1.2s cubic-bezier(0.4, 0, 0.2, 1) 0.3s forwards;
+        }
+
+        .hero-image-wrapper {
+            position: relative;
+            width: 100%;
+            height: 700px;
+            overflow: hidden;
+        }
+
+        .hero-image-wrapper::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            border: 1px solid var(--border);
+            pointer-events: none;
+        }
+
+        .hero-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            filter: grayscale(20%);
+        }
+
+        /* Section Styles */
+        section {
+            padding: 140px 0;
+        }
+
+        .section-header {
+            max-width: 800px;
+            margin: 0 auto 80px;
+            text-align: center;
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .section-header.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .section-label {
+            font-size: 13px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: var(--secondary);
+            font-weight: 600;
+            margin-bottom: 20px;
+            display: block;
+        }
+
+        .section-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 56px;
+            line-height: 1.2;
+            color: var(--primary);
+            font-weight: 400;
+            margin-bottom: 24px;
+        }
+
+        .section-description {
+            font-size: 18px;
+            line-height: 1.8;
+            color: var(--gray);
+            font-weight: 300;
+        }
+
+        /* Expertise Section */
+        .expertise {
+            background: var(--white);
+        }
+
+        .expertise-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1px;
+            background: var(--border);
+            border: 1px solid var(--border);
+        }
+
+        .expertise-item {
+            padding: 56px 48px;
+            background: var(--white);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            opacity: 0;
+            transform: translateY(30px);
+            position: relative;
+        }
+
+        .expertise-item.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .expertise-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--secondary);
+            transition: width 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .expertise-item:hover {
+            background: var(--light);
+        }
+
+        .expertise-item:hover::before {
+            width: 100%;
+        }
+
+        .expertise-number {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 18px;
+            color: var(--secondary);
+            margin-bottom: 24px;
+            font-weight: 300;
+        }
+
+        .expertise-item h3 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 28px;
+            margin-bottom: 16px;
+            color: var(--primary);
+            font-weight: 500;
+        }
+
+        .expertise-item p {
+            color: var(--gray);
+            line-height: 1.8;
+            font-size: 15px;
+            font-weight: 300;
+        }
+
+        /* Results Section */
+        .results {
+            background: var(--primary);
+            color: var(--white);
+        }
+
+        .results .section-label,
+        .results .section-description {
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        .results .section-title {
+            color: var(--white);
+        }
+
+        .results-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 64px;
+            margin-top: 80px;
+        }
+
+        .result-item {
+            text-align: center;
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .result-item.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .result-value {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 64px;
+            font-weight: 300;
+            color: var(--accent);
+            display: block;
+            margin-bottom: 12px;
+            line-height: 1;
+        }
+
+        .result-label {
+            font-size: 15px;
+            color: rgba(255, 255, 255, 0.8);
+            letter-spacing: 0.5px;
+            font-weight: 300;
+        }
+
+        /* About Section */
+        .about {
+            background: var(--light);
+        }
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 100px;
+            align-items: center;
+        }
+
+        .about-content {
+            opacity: 0;
+            transform: translateX(-30px);
+            transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .about-content.visible {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .about-content h2 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 48px;
+            margin-bottom: 32px;
+            color: var(--primary);
+            font-weight: 400;
+            line-height: 1.3;
+        }
+
+        .about-content p {
+            margin-bottom: 24px;
+            font-size: 16px;
+            line-height: 1.9;
+            color: var(--gray);
+            font-weight: 300;
+        }
+
+        .credentials {
+            margin-top: 48px;
+            padding-top: 48px;
+            border-top: 1px solid var(--border);
+        }
+
+        .credentials h4 {
+            font-size: 14px;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            color: var(--secondary);
+            margin-bottom: 20px;
+            font-weight: 600;
+        }
+
+        .credentials ul {
+            list-style: none;
+        }
+
+        .credentials li {
+            padding: 12px 0;
+            color: var(--gray);
+            font-size: 15px;
+            position: relative;
+            padding-left: 24px;
+            font-weight: 300;
+        }
+
+        .credentials li::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 8px;
+            height: 1px;
+            background: var(--secondary);
+        }
+
+        .about-image-wrapper {
+            opacity: 0;
+            transform: translateX(30px);
+            transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .about-image-wrapper.visible {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .about-image {
+            width: 100%;
+            height: 600px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .about-image::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            border: 1px solid var(--border);
+            pointer-events: none;
+        }
+
+        .about-image-placeholder {
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, var(--secondary) 0%, var(--accent) 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 16px;
+            letter-spacing: 1px;
+        }
+
+        /* Testimonials */
+        .testimonials {
+            background: var(--white);
+        }
+
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 48px;
+            margin-top: 80px;
+        }
+
+        .testimonial-card {
+            padding: 48px;
+            border: 1px solid var(--border);
+            background: var(--white);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            opacity: 0;
+            transform: translateY(30px);
+        }
+
+        .testimonial-card.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .testimonial-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 24px 48px rgba(0,0,0,0.08);
+        }
+
+        .testimonial-quote {
+            font-size: 16px;
+            line-height: 1.8;
+            color: var(--gray);
+            margin-bottom: 32px;
+            font-weight: 300;
+            font-style: italic;
+        }
+
+        .testimonial-author {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+        }
+
+        .testimonial-name {
+            font-weight: 600;
+            color: var(--primary);
+            font-size: 15px;
+        }
+
+        .testimonial-title {
+            font-size: 14px;
+            color: var(--gray);
+            font-weight: 300;
+        }
+
+        .testimonial-rating {
+            color: var(--secondary);
+            font-size: 14px;
+            margin-top: 8px;
+        }
+
+        /* Approach Section */
+        .approach {
+            background: var(--light);
+        }
+
+        .approach-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 64px;
+            margin-top: 80px;
+        }
+
+        .approach-item {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .approach-item.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .approach-number {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 72px;
+            font-weight: 300;
+            color: var(--border);
+            line-height: 1;
+            margin-bottom: 24px;
+        }
+
+        .approach-item h3 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 32px;
+            margin-bottom: 16px;
+            color: var(--primary);
+            font-weight: 500;
+        }
+
+        .approach-item p {
+            color: var(--gray);
+            line-height: 1.8;
+            font-size: 15px;
+            font-weight: 300;
+        }
+
+        /* Articles */
+        .articles {
+            background: var(--white);
+        }
+
+        .articles-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 48px;
+            margin-top: 80px;
+        }
+
+        .article-card {
+            background: var(--white);
+            border: 1px solid var(--border);
+            overflow: hidden;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            opacity: 0;
+            transform: translateY(30px);
+        }
+
+        .article-card.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .article-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 24px 48px rgba(0,0,0,0.08);
+        }
+
+        .article-image {
+            width: 100%;
+            height: 280px;
+            background: linear-gradient(135deg, var(--light) 0%, var(--border) 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--gray);
+            font-size: 14px;
+            letter-spacing: 1px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .article-content {
+            padding: 40px;
+        }
+
+        .article-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .article-date {
+            color: var(--secondary);
+            font-size: 13px;
+            font-weight: 500;
+            letter-spacing: 0.5px;
+        }
+
+        .article-category {
+            font-size: 12px;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            color: var(--gray);
+        }
+
+        .article-card h3 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 26px;
+            margin-bottom: 16px;
+            color: var(--primary);
+            font-weight: 500;
+            line-height: 1.4;
+        }
+
+        .article-card p {
+            color: var(--gray);
+            line-height: 1.8;
+            margin-bottom: 24px;
+            font-size: 15px;
+            font-weight: 300;
+        }
+
+        .article-link {
+            color: var(--primary);
+            font-weight: 500;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 14px;
+            letter-spacing: 0.5px;
+            transition: gap 0.3s ease;
+        }
+
+        .article-link:hover {
+            gap: 12px;
+        }
+
+        /* Contact Section */
+        .contact {
+            background: var(--primary);
+            color: var(--white);
+        }
+
+        .contact .section-label,
+        .contact .section-description {
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        .contact .section-title {
+            color: var(--white);
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 100px;
+            margin-top: 80px;
+        }
+
+        .contact-info {
+            opacity: 0;
+            transform: translateX(-30px);
+            transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .contact-info.visible {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .contact-item {
+            padding: 40px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .contact-item:first-child {
+            padding-top: 0;
+        }
+
+        .contact-label {
+            font-size: 12px;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            color: var(--accent);
+            margin-bottom: 12px;
+            font-weight: 600;
+        }
+
+        .contact-value {
+            font-size: 20px;
+            color: var(--white);
+            font-weight: 300;
+            line-height: 1.6;
+        }
+
+        .contact-value a {
+            color: var(--white);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .contact-value a:hover {
+            color: var(--accent);
+        }
+
+        .map-wrapper {
+            opacity: 0;
+            transform: translateX(30px);
+            transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+            height: 500px;
+            position: relative;
+            overflow: hidden;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .map-wrapper.visible {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .map-wrapper iframe {
+            width: 100%;
+            height: 100%;
+            filter: grayscale(100%) invert(92%) contrast(83%);
+        }
+
+        /* Footer */
+        footer {
+            background: #0A0A0A;
+            color: rgba(255, 255, 255, 0.7);
+            padding: 80px 0 40px;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 80px;
+            margin-bottom: 80px;
+        }
+
+        .footer-brand h3 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 28px;
+            color: var(--white);
+            margin-bottom: 24px;
+            font-weight: 500;
+        }
+
+        .footer-brand p {
+            line-height: 1.8;
+            font-size: 15px;
+            font-weight: 300;
+        }
+
+        .footer-column h4 {
+            font-size: 14px;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            color: var(--white);
+            margin-bottom: 24px;
+            font-weight: 600;
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links a {
+            color: rgba(255, 255, 255, 0.7);
+            text-decoration: none;
+            display: block;
+            margin-bottom: 12px;
+            font-size: 15px;
+            transition: color 0.3s ease;
+            font-weight: 300;
+        }
+
+        .footer-links a:hover {
+            color: var(--white);
+        }
+
+        .footer-bottom {
+            padding-top: 40px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 14px;
+        }
+
+        .footer-legal {
+            display: flex;
+            gap: 32px;
+        }
+
+        .footer-legal a {
+            color: rgba(255, 255, 255, 0.7);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-legal a:hover {
+            color: var(--white);
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(40px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        /* Responsive */
+        @media (max-width: 1200px) {
+            .container {
+                padding: 0 32px;
+            }
+
+            .hero h1 {
+                font-size: 60px;
+            }
+
+            .section-title {
+                font-size: 48px;
+            }
+        }
+
+        @media (max-width: 968px) {
+            .nav-links {
+                display: none;
+            }
+
+            .hero-grid,
+            .about-grid,
+            .contact-grid {
+                grid-template-columns: 1fr;
+                gap: 60px;
+            }
+
+            .expertise-grid,
+            .results-grid,
+            .testimonials-grid,
+            .articles-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .approach-grid {
+                grid-template-columns: 1fr;
+                gap: 48px;
+            }
+
+            .hero h1 {
+                font-size: 48px;
+            }
+
+            .section-title {
+                font-size: 40px;
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr;
+                gap: 48px;
+            }
+
+            .footer-bottom {
+                flex-direction: column;
+                gap: 24px;
+                text-align: center;
+            }
+
+            section {
+                padding: 80px 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="container">
+            <div class="nav-content">
+                <div class="logo">
+                    <svg class="logo-icon" viewBox="0 0 24 24" fill="none">
+                        <path d="M12 2L4 5v6.09c0 5.05 3.41 9.76 8 10.91 4.59-1.15 8-5.86 8-10.91V5l-8-3z" stroke="currentColor" fill="none"/>
+                    </svg>
+                    Cornaciu
+                </div>
+                <ul class="nav-links">
+                    <li><a href="#despre">Despre</a></li>
+                    <li><a href="#experienta">Expertiza</a></li>
+                    <li><a href="#abordare">Abordare</a></li>
+                    <li><a href="#articole">Publicații</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+                <a href="#contact" class="cta-nav">Consultație Gratuita</a>
+            </div>
+        </div>
+    </nav>
+
+    <section class="hero">
+        <div class="container">
+            <div class="hero-grid">
+                <div class="hero-content">
+                    <span class="hero-label">Cabinet de Avocatură</span>
+                    <h1>Excelență Juridică, Rezultate Concrete</h1>
+                    <p class="hero-description">Reprezentare juridică de nivel superior, fundamentată pe experiență vastă, rigoare profesională și dedicare absolută față de interesele clientului.</p>
+                    <div class="hero-actions">
+                        <a href="#contact" class="cta-primary">Consultație Gratuita</a>
+                        <a href="#despre" class="cta-secondary">Contactează-mă</a>
+                    </div>
+                    <div class="hero-stats">
+                        <div class="stat">
+                            <span class="stat-number">35+</span>
+                            <span class="stat-label">Ani Experiență</span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat-number">500+</span>
+                            <span class="stat-label">Cazuri Finalizate</span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat-number">98%</span>
+                            <span class="stat-label">Rată de Succes</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="hero-image">
+                    <div class="hero-image-wrapper">
+                        <img src="cornaciu1.png" alt="Avocat Specialist">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="experienta" class="expertise">
+        <div class="container-narrow">
+            <div class="section-header">
+                <span class="section-label">Domenii de Practică</span>
+                <h2 class="section-title">Expertiză Juridică Comprehensivă</h2>
+                <p class="section-description">Asistență juridică specializată în multiple ramuri ale dreptului, cu rezultate demonstrate și experiență profundă în fiecare domeniu de practică.</p>
+            </div>
+            <div class="expertise-grid">
+                <div class="expertise-item">
+                    <div class="expertise-number">01</div>
+                    <h3>Drept Civil</h3>
+                    <p>Litigii civile complexe, contracte comerciale, recuperări de creanțe și reprezentare în instanțele superioare.</p>
+                </div>
+                <div class="expertise-item">
+                    <div class="expertise-number">02</div>
+                    <h3>Drept Comercial</h3>
+                    <p>Consultanță corporativă, fuziuni și achiziții, restructurări societare și conformitate reglementară.</p>
+                </div>
+                <div class="expertise-item">
+                    <div class="expertise-number">03</div>
+                    <h3>Dreptul Familiei</h3>
+                    <p>Proceduri de divorț, custodie, partaj matrimonial și protecția intereselor minorilor.</p>
+                </div>
+                <div class="expertise-item">
+                    <div class="expertise-number">04</div>
+                    <h3>Drept Imobiliar</h3>
+                    <p>Tranzacții imobiliare, verificări de conformitate, litigii de proprietate și consultanță în dezvoltări imobiliare.</p>
+                </div>
+                <div class="expertise-item">
+                    <div class="expertise-number">05</div>
+                    <h3>Dreptul Muncii</h3>
+                    <p>Litigii individuale și colective de muncă, negocieri contractuale și consultanță în relații de muncă.</p>
+                </div>
+                <div class="expertise-item">
+                    <div class="expertise-number">06</div>
+                    <h3>Drept Penal</h3>
+                    <p>Apărare penală strategică, asistență în faza de urmărire penală și reprezentare în proces.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="results">
+        <div class="container-narrow">
+            <div class="section-header">
+                <span class="section-label">Rezultate Demonstrate</span>
+                <h2 class="section-title">Performanță de Excelență</h2>
+                <p class="section-description">Performanță constantă și rezultate măsurabile în reprezentarea intereselor clienților.</p>
+            </div>
+            <div class="results-grid">
+                <div class="result-item">
+                    <span class="result-value">500+</span>
+                    <span class="result-label">Cazuri Finalizate cu Succes</span>
+                </div>
+                <div class="result-item">
+                    <span class="result-value">98%</span>
+                    <span class="result-label">Rată de Succes în Litigii</span>
+                </div>
+                <div class="result-item">
+                    <span class="result-value">35+</span>
+                    <span class="result-label">Ani Experiență în Barou</span>
+                </div>
+                <div class="result-item">
+                    <span class="result-value">€10M+</span>
+                    <span class="result-label">Valoare Recuperată pentru Clienți</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="despre" class="about">
+        <div class="container">
+            <div class="about-grid">
+                <div class="about-content">
+                    <span class="section-label">Despre Cabinet</span>
+                    <h2>Experiență, Integritate, Rezultate</h2>
+                    <p>Cu peste 35 ani de practică juridică activă, am dezvoltat o expertiza comprehensivă în multiple domenii ale dreptului, reprezentând cu succes interesele clienților în sute de cazuri complexe.</p>
+                    <p>Filosofia cabinetului se bazează pe trei piloni fundamentali: pregătire riguroasă, strategie juridică adaptată fiecărui caz și comunicare transparentă cu clientul pe întreaga durată a reprezentării.</p>
+                    <p>Abordarea mea combină cunoașterea profundă a legislației cu experiența practică acumulată în instanțele de toate nivelurile, asigurând o reprezentare juridică de cea mai înaltă calitate.</p>
+                    <div class="credentials">
+                        <h4>Calificări și Afilieri</h4>
+                        <ul>
+                            <li>Membru al Baroului Giurgiu</li>
+                            <li>Certificat în Mediare și Soluționare Alternativă a Disputelor</li>
+                            <li>Formator Continuu în Drept European</li>
+                            <li>Membru al Asociației Internaționale a Avocaților</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="about-image-wrapper">
+                    <div class="about-image">
+                        <img class="about-image-placeholder" src="cornaciu2.png">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="testimonials">
+        <div class="container-narrow">
+            <div class="section-header">
+                <span class="section-label">Feedback Clienți</span>
+                <h2 class="section-title">Ce Spun Clienții Noștri</h2>
+                <p class="section-description">Încrederea și satisfacția clienților reprezintă cel mai valoros indicator al calității serviciilor noastre.</p>
+            </div>
+            <div class="testimonials-grid">
+                <div class="testimonial-card">
+                    <p class="testimonial-quote">"Profesionalism excepțional și o abordare strategică care a făcut diferența în cazul nostru. Recomand cu încredere serviciile acestui cabinet."</p>
+                    <div class="testimonial-author">
+                        <span class="testimonial-name">Adrian Popescu</span>
+                        <span class="testimonial-title">Director General, S.C. Tech Solutions</span>
+                        <div class="testimonial-rating">★★★★★</div>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <p class="testimonial-quote">"Expertiză juridică de nivel superior, comunicare excelentă și rezultate care au depășit așteptările. O colaborare pe care o recomand fără rezerve."</p>
+                    <div class="testimonial-author">
+                        <span class="testimonial-name">Elena Ionescu</span>
+                        <span class="testimonial-title">Antreprenor</span>
+                        <div class="testimonial-rating">★★★★★</div>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <p class="testimonial-quote">"Dedicare totală și atenție la detalii în tratarea cazului meu. Am apreciat transparența și profesionalismul pe tot parcursul procesului."</p>
+                    <div class="testimonial-author">
+                        <span class="testimonial-name">Mihai Constantin</span>
+                        <span class="testimonial-title">Manager Regional</span>
+                        <div class="testimonial-rating">★★★★★</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="abordare" class="approach">
+        <div class="container-narrow">
+            <div class="section-header">
+                <span class="section-label">Metodologie</span>
+                <h2 class="section-title">Abordarea Noastră</h2>
+                <p class="section-description">Un proces structurat și metodic care asigură reprezentare juridică optimă.</p>
+            </div>
+            <div class="approach-grid">
+                <div class="approach-item">
+                    <div class="approach-number">01</div>
+                    <h3>Analiză Comprehensivă</h3>
+                    <p>Evaluare detaliată a situației juridice, identificarea tuturor aspectelor relevante și dezvoltarea unei strategii personalizate adaptate specificului fiecărui caz.</p>
+                </div>
+                <div class="approach-item">
+                    <div class="approach-number">02</div>
+                    <h3>Strategie Juridică</h3>
+                    <p>Formularea unei abordări strategice fundamentate pe jurisprudență relevantă, analiză de risc și obiectivele clientului, asigurând cea mai eficientă cale către rezultatul dorit.</p>
+                </div>
+                <div class="approach-item">
+                    <div class="approach-number">03</div>
+                    <h3>Implementare Riguroasă</h3>
+                    <p>Executarea strategiei cu atenție la detalii, respectarea termenelor procedurale și menținerea standardelor profesionale la cel mai înalt nivel pe durata întregului proces.</p>
+                </div>
+                <div class="approach-item">
+                    <div class="approach-number">04</div>
+                    <h3>Comunicare Continuă</h3>
+                    <p>Informare constantă a clientului asupra evoluției cazului, explicații clare privind procedurile juridice și disponibilitate pentru clarificări și consultări pe tot parcursul colaborării.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="articole" class="articles">
+        <div class="container-narrow">
+            <div class="section-header">
+                <span class="section-label">Publicații</span>
+                <h2 class="section-title">Articole și Analize Juridice</h2>
+                <p class="section-description">Perspective profesionale asupra evoluțiilor legislative și jurisprudențiale recente.</p>
+            </div>
+            <div class="articles-grid">
+                <div class="article-card">
+                    <div class="article-image">Imagine Articol</div>
+                    <div class="article-content">
+                        <div class="article-meta">
+                            <span class="article-date">15 Septembrie 2025</span>
+                            <span class="article-category">Drept Civil</span>
+                        </div>
+                        <h3>Modificări Recente în Codul Civil: Implicații Practice</h3>
+                        <p>Analiză detaliată a recentelor amendamente legislative și impactul acestora asupra practicii contractuale în domeniul civil și comercial.</p>
+                        <a href="articol.html" class="article-link">Citește articolul →</a>
+                    </div>
+                </div>
+                <div class="article-card">
+                    <div class="article-image">Imagine Articol</div>
+                    <div class="article-content">
+                        <div class="article-meta">
+                            <span class="article-date">10 Septembrie 2025</span>
+                            <span class="article-category">Dreptul Muncii</span>
+                        </div>
+                        <h3>Jurisprudență Relevantă în Litigii de Muncă</h3>
+                        <p>Examinare critică a deciziilor recente ale instanțelor superioare în materie de drept al muncii și tendințe în interpretarea legislației.</p>
+                        <a href="#" class="article-link">Citește articolul →</a>
+                    </div>
+                </div>
+                <div class="article-card">
+                    <div class="article-image">Imagine Articol</div>
+                    <div class="article-content">
+                        <div class="article-meta">
+                            <span class="article-date">5 Septembrie 2025</span>
+                            <span class="article-category">Drept Imobiliar</span>
+                        </div>
+                        <h3>Aspecte Juridice în Tranzacții Imobiliare Complexe</h3>
+                        <p>Ghid profesional pentru navigarea aspectelor juridice în tranzacții imobiliare de anvergură și minimizarea riscurilor asociate.</p>
+                        <a href="#" class="article-link">Citește articolul →</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="contact">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-label">Contact</span>
+                <h2 class="section-title">Programează o Consultație</h2>
+                <p class="section-description">Suntem disponibili pentru a discuta despre situația dumneavoastră juridică și pentru a oferi consultanță profesională.</p>
+            </div>
+            <div class="contact-grid">
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <div class="contact-label">Adresă Cabinet</div>
+                        <div class="contact-value">
+                            Strada Trandafirilor nr. 3, Etaj 3<br>
+                            Piata Centrala Giurgiu, Romania
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-label">Telefon</div>
+                        <div class="contact-value">
+                            <a href="tel:+40723370737">+40 723 370 737</a>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-label">Email</div>
+                        <div class="contact-value">
+                            <a href="mailto:office@cornaciu.ro">office@cornaciu.ro</a><br>
+							<a href="mailto:secretariat@cornaciu.ro">secretariat@cornaciu.ro</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="map-wrapper">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d285.123456!2d25.9671307!3d43.8912943!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f16!3m3!1m2!1s0x40ae6729fbbc946b%3A0xf7bd37680903b2e9!2sAvocat%20Cornaciu%20C%C4%83t%C4%83lin!5e0!3m2!1sen!2s!4v1696425600000!5m2!1sen!2s" allowfullscreen="" loading="lazy"></iframe>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <h3>Cornaciu</h3>
+                    <p>Servicii juridice de excelență, fundamentate pe experiență vastă, integritate profesională și dedicare absolută către interesele fiecărui client.</p>
+                </div>
+                <div class="footer-column">
+                    <h4>Navigare</h4>
+                    <ul class="footer-links">
+                        <li><a href="#despre">Despre Cabinet</a></li>
+                        <li><a href="#experienta">Expertiza</a></li>
+                        <li><a href="#abordare">Abordare</a></li>
+                        <li><a href="#articole">Publicații</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h4>Servicii</h4>
+                    <ul class="footer-links">
+                        <li><a href="#">Drept Civil</a></li>
+                        <li><a href="#">Drept Comercial</a></li>
+                        <li><a href="#">Dreptul Familiei</a></li>
+                        <li><a href="#">Drept Imobiliar</a></li>
+                        <li><a href="#">Dreptul Muncii</a></li>
+                        <li><a href="#">Drept Penal</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h4>Legal</h4>
+                    <ul class="footer-links">
+                        <li><a href="#">Politica de Confidențialitate</a></li>
+                        <li><a href="#">Termeni și Condiții</a></li>
+                        <li><a href="#">Conformitate GDPR</a></li>
+                        <li><a href="#">Cod Deontologic</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Cornaciu. Toate drepturile rezervate. Website realizat de <a style="color: gray" href="https://designerultau.ro">DesignerulTau.ro</a></p>
+                <div class="footer-legal">
+                    <a href="#">Politica de Confidențialitate</a>
+                    <a href="#">Termeni și Condiții</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scroll for navigation
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    const offset = 80;
+                    const targetPosition = target.offsetTop - offset;
+                    window.scrollTo({
+                        top: targetPosition,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // Intersection Observer for scroll animations
+        const observerOptions = {
+            threshold: 0.15,
+            rootMargin: '0px 0px -80px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach((entry, index) => {
+                if (entry.isIntersecting) {
+                    setTimeout(() => {
+                        entry.target.classList.add('visible');
+                    }, index * 100);
+                }
+            });
+        }, observerOptions);
+
+        // Observe all animated elements
+        const animatedElements = document.querySelectorAll(`
+            .section-header,
+            .expertise-item,
+            .result-item,
+            .about-content,
+            .about-image-wrapper,
+            .testimonial-card,
+            .approach-item,
+            .article-card,
+            .contact-info,
+            .map-wrapper
+        `);
+
+        animatedElements.forEach(el => observer.observe(el));
+
+        // Counter animation for statistics
+        const animateCounter = (element, target, duration, suffix = '') => {
+            let current = 0;
+            const increment = target / (duration / 16);
+            const isPercentage = suffix === '%';
+            const hasPlus = suffix === '+';
+            
+            const timer = setInterval(() => {
+                current += increment;
+                if (current >= target) {
+                    element.textContent = target + suffix;
+                    clearInterval(timer);
+                } else {
+                    element.textContent = Math.floor(current) + suffix;
+                }
+            }, 16);
+        };
+
+        // Observe stats sections for counter animation
+        const statsObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting && !entry.target.classList.contains('animated')) {
+                    entry.target.classList.add('animated');
+                    
+                    // Animate hero stats
+                    const heroStats = entry.target.querySelectorAll('.hero-stats .stat-number');
+                    heroStats.forEach(stat => {
+                        const text = stat.textContent;
+                        const hasPlus = text.includes('+');
+                        const hasPercent = text.includes('%');
+                        const target = parseInt(text);
+                        const suffix = hasPercent ? '%' : (hasPlus ? '+' : '');
+                        animateCounter(stat, target, 2000, suffix);
+                    });
+
+                    // Animate results stats
+                    const resultStats = entry.target.querySelectorAll('.result-value');
+                    resultStats.forEach(stat => {
+                        const text = stat.textContent;
+                        if (text.includes('€')) {
+                            // Special handling for currency
+                            stat.textContent = '€10M+';
+                        } else {
+                            const hasPlus = text.includes('+');
+                            const hasPercent = text.includes('%');
+                            const target = parseInt(text);
+                            const suffix = hasPercent ? '%' : (hasPlus ? '+' : '');
+                            animateCounter(stat, target, 2000, suffix);
+                        }
+                    });
+                }
+            });
+        }, observerOptions);
+
+        // Observe hero stats and results sections
+        const heroStatsSection = document.querySelector('.hero-stats');
+        const resultsSection = document.querySelector('.results-grid');
+        
+        if (heroStatsSection) statsObserver.observe(heroStatsSection);
+        if (resultsSection) statsObserver.observe(resultsSection);
+
+        // Navbar scroll effect
+        let lastScroll = 0;
+        const navbar = document.querySelector('nav');
+
+        window.addEventListener('scroll', () => {
+            const currentScroll = window.pageYOffset;
+            
+            if (currentScroll > 100) {
+                navbar.style.padding = '0px 0';
+                navbar.style.boxShadow = '0 4px 20px rgba(0,0,0,0.08)';
+            } else {
+                navbar.style.padding = '0px 0';
+                navbar.style.boxShadow = 'none';
+            }
+            
+            lastScroll = currentScroll;
+        });
+    </script>
+</body>
+</html>
