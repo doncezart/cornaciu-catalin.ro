@@ -1,0 +1,1095 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modificări Recente în Codul Civil | Cabinet Juridic</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #1A1A1A;
+            --secondary: #8B7355;
+            --accent: #A0826D;
+            --light: #F8F6F3;
+            --gray: #666666;
+            --white: #FFFFFF;
+            --border: #E5E1DC;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            color: var(--primary);
+            line-height: 1.6;
+            overflow-x: hidden;
+            background: var(--white);
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 40px;
+        }
+
+        .container-narrow {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 0 40px;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.98);
+            backdrop-filter: blur(20px);
+            z-index: 1000;
+            border-bottom: 1px solid var(--border);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .nav-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 24px 0;
+        }
+
+        .logo {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 26px;
+            font-weight: 600;
+            color: var(--primary);
+            letter-spacing: 0.5px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+        }
+
+        .logo-icon {
+            width: 32px;
+            height: 32px;
+            stroke: var(--secondary);
+            stroke-width: 1.5;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 48px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--primary);
+            font-weight: 500;
+            font-size: 15px;
+            letter-spacing: 0.3px;
+            transition: color 0.3s ease;
+            position: relative;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 0;
+            width: 0;
+            height: 1px;
+            background: var(--secondary);
+            transition: width 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .nav-links a:hover {
+            color: var(--secondary);
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .cta-nav {
+            background: var(--primary);
+            color: white;
+            padding: 14px 32px;
+            border: none;
+            cursor: pointer;
+            font-weight: 500;
+            font-size: 15px;
+            letter-spacing: 0.3px;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .cta-nav:hover {
+            background: var(--secondary);
+        }
+
+        /* Article Header */
+        .article-header {
+            padding: 160px 0 80px;
+            background: var(--light);
+            border-bottom: 1px solid var(--border);
+        }
+
+        .breadcrumb {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 32px;
+            font-size: 14px;
+            color: var(--gray);
+        }
+
+        .breadcrumb a {
+            color: var(--gray);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .breadcrumb a:hover {
+            color: var(--secondary);
+        }
+
+        .breadcrumb span {
+            color: var(--border);
+        }
+
+        .article-meta-top {
+            display: flex;
+            align-items: center;
+            gap: 24px;
+            margin-bottom: 32px;
+        }
+
+        .article-category {
+            font-size: 13px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: var(--secondary);
+            font-weight: 600;
+        }
+
+        .article-date {
+            font-size: 14px;
+            color: var(--gray);
+            font-weight: 400;
+        }
+
+        .article-reading-time {
+            font-size: 14px;
+            color: var(--gray);
+            font-weight: 400;
+        }
+
+        .article-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 64px;
+            line-height: 1.15;
+            margin-bottom: 32px;
+            color: var(--primary);
+            font-weight: 400;
+            letter-spacing: -1px;
+        }
+
+        .article-excerpt {
+            font-size: 22px;
+            line-height: 1.6;
+            color: var(--gray);
+            margin-bottom: 48px;
+            font-weight: 300;
+        }
+
+        .article-author {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            padding: 32px 0;
+            border-top: 1px solid var(--border);
+        }
+
+        .author-avatar {
+            width: 60px;
+            height: 60px;
+            background: var(--secondary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 24px;
+            font-weight: 600;
+        }
+
+        .author-info {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+        }
+
+        .author-name {
+            font-weight: 600;
+            color: var(--primary);
+            font-size: 16px;
+        }
+
+        .author-title {
+            font-size: 14px;
+            color: var(--gray);
+            font-weight: 300;
+        }
+
+        /* Article Content */
+        .article-body {
+            padding: 100px 0;
+        }
+
+        .article-featured-image {
+            width: 100%;
+            height: 500px;
+            background: linear-gradient(135deg, var(--light) 0%, var(--border) 100%);
+            margin-bottom: 80px;
+            border: 1px solid var(--border);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--gray);
+        }
+
+        .article-content {
+            font-size: 18px;
+            line-height: 1.9;
+            color: var(--primary);
+        }
+
+        .article-content h2 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 40px;
+            margin: 64px 0 24px;
+            color: var(--primary);
+            font-weight: 500;
+            line-height: 1.3;
+        }
+
+        .article-content h2:first-child {
+            margin-top: 0;
+        }
+
+        .article-content h3 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 32px;
+            margin: 48px 0 20px;
+            color: var(--primary);
+            font-weight: 500;
+            line-height: 1.4;
+        }
+
+        .article-content p {
+            margin-bottom: 28px;
+            font-weight: 300;
+        }
+
+        .article-content strong {
+            font-weight: 600;
+            color: var(--primary);
+        }
+
+        .article-content em {
+            font-style: italic;
+        }
+
+        .article-content ul,
+        .article-content ol {
+            margin: 32px 0 32px 32px;
+        }
+
+        .article-content li {
+            margin-bottom: 16px;
+            font-weight: 300;
+        }
+
+        .article-content blockquote {
+            margin: 48px 0;
+            padding: 40px 48px;
+            background: var(--light);
+            border-left: 3px solid var(--secondary);
+            font-size: 20px;
+            line-height: 1.8;
+            font-weight: 300;
+            font-style: italic;
+        }
+
+        .article-content blockquote p {
+            margin-bottom: 0;
+        }
+
+        .article-content a {
+            color: var(--secondary);
+            text-decoration: none;
+            border-bottom: 1px solid var(--secondary);
+            transition: all 0.3s ease;
+        }
+
+        .article-content a:hover {
+            color: var(--primary);
+            border-bottom-color: var(--primary);
+        }
+
+        /* Key Takeaways Box */
+        .key-takeaways {
+            background: var(--primary);
+            color: var(--white);
+            padding: 48px;
+            margin: 64px 0;
+        }
+
+        .key-takeaways h3 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 28px;
+            margin: 0 0 24px 0;
+            color: var(--white);
+        }
+
+        .key-takeaways ul {
+            margin: 0;
+            list-style: none;
+        }
+
+        .key-takeaways li {
+            padding-left: 28px;
+            position: relative;
+            margin-bottom: 16px;
+            color: rgba(255, 255, 255, 0.9);
+        }
+
+        .key-takeaways li::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 12px;
+            width: 12px;
+            height: 1px;
+            background: var(--accent);
+        }
+
+        /* Article Footer */
+        .article-footer {
+            border-top: 1px solid var(--border);
+            padding-top: 48px;
+            margin-top: 80px;
+        }
+
+        .article-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin-bottom: 48px;
+        }
+
+        .tag-label {
+            font-size: 13px;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            color: var(--gray);
+            font-weight: 600;
+            margin-right: 12px;
+        }
+
+        .tag {
+            padding: 8px 20px;
+            border: 1px solid var(--border);
+            font-size: 14px;
+            color: var(--primary);
+            text-decoration: none;
+            transition: all 0.3s ease;
+            font-weight: 400;
+        }
+
+        .tag:hover {
+            border-color: var(--secondary);
+            color: var(--secondary);
+        }
+
+        .article-share {
+            padding: 48px 0;
+            border-top: 1px solid var(--border);
+        }
+
+        .share-label {
+            font-size: 13px;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            color: var(--gray);
+            font-weight: 600;
+            margin-bottom: 20px;
+            display: block;
+        }
+
+        .share-buttons {
+            display: flex;
+            gap: 12px;
+        }
+
+        .share-button {
+            width: 48px;
+            height: 48px;
+            border: 1px solid var(--border);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary);
+            text-decoration: none;
+            transition: all 0.3s ease;
+            font-size: 18px;
+        }
+
+        .share-button:hover {
+            border-color: var(--secondary);
+            color: var(--secondary);
+        }
+
+        /* Author Bio */
+        .author-bio {
+            background: var(--light);
+            padding: 56px;
+            margin: 80px 0;
+            border: 1px solid var(--border);
+        }
+
+        .author-bio-content {
+            display: flex;
+            gap: 32px;
+            align-items: flex-start;
+        }
+
+        .author-bio-avatar {
+            width: 100px;
+            height: 100px;
+            background: var(--secondary);
+            flex-shrink: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 40px;
+            font-weight: 600;
+        }
+
+        .author-bio-text h4 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 28px;
+            margin-bottom: 8px;
+            color: var(--primary);
+        }
+
+        .author-bio-text .author-bio-title {
+            font-size: 14px;
+            color: var(--secondary);
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            margin-bottom: 20px;
+            font-weight: 600;
+        }
+
+        .author-bio-text p {
+            font-size: 16px;
+            line-height: 1.8;
+            color: var(--gray);
+            font-weight: 300;
+        }
+
+        /* Related Articles */
+        .related-articles {
+            background: var(--white);
+            padding: 100px 0;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 64px;
+        }
+
+        .section-label {
+            font-size: 13px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: var(--secondary);
+            font-weight: 600;
+            margin-bottom: 16px;
+            display: block;
+        }
+
+        .section-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 48px;
+            color: var(--primary);
+            font-weight: 400;
+        }
+
+        .related-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 40px;
+        }
+
+        .related-card {
+            border: 1px solid var(--border);
+            overflow: hidden;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            text-decoration: none;
+            display: block;
+        }
+
+        .related-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 24px 48px rgba(0,0,0,0.08);
+        }
+
+        .related-image {
+            width: 100%;
+            height: 240px;
+            background: linear-gradient(135deg, var(--light) 0%, var(--border) 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--gray);
+            font-size: 14px;
+        }
+
+        .related-content {
+            padding: 32px;
+        }
+
+        .related-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 16px;
+            padding-bottom: 16px;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .related-date {
+            font-size: 13px;
+            color: var(--secondary);
+            font-weight: 500;
+        }
+
+        .related-category {
+            font-size: 12px;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            color: var(--gray);
+        }
+
+        .related-card h3 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 24px;
+            color: var(--primary);
+            font-weight: 500;
+            line-height: 1.4;
+        }
+
+        /* CTA Section */
+        .article-cta {
+            background: var(--primary);
+            padding: 100px 0;
+            text-align: center;
+        }
+
+        .article-cta h2 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 48px;
+            color: var(--white);
+            margin-bottom: 24px;
+            font-weight: 400;
+        }
+
+        .article-cta p {
+            font-size: 18px;
+            color: rgba(255, 255, 255, 0.8);
+            margin-bottom: 40px;
+            font-weight: 300;
+        }
+
+        .cta-button {
+            background: var(--white);
+            color: var(--primary);
+            padding: 18px 48px;
+            border: 2px solid var(--white);
+            cursor: pointer;
+            font-weight: 500;
+            font-size: 16px;
+            letter-spacing: 0.3px;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .cta-button:hover {
+            background: transparent;
+            color: var(--white);
+        }
+
+        /* Footer */
+        footer {
+            background: #0A0A0A;
+            color: rgba(255, 255, 255, 0.7);
+            padding: 80px 0 40px;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 80px;
+            margin-bottom: 80px;
+        }
+
+        .footer-brand h3 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 28px;
+            color: var(--white);
+            margin-bottom: 24px;
+            font-weight: 500;
+        }
+
+        .footer-brand p {
+            line-height: 1.8;
+            font-size: 15px;
+            font-weight: 300;
+        }
+
+        .footer-column h4 {
+            font-size: 14px;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            color: var(--white);
+            margin-bottom: 24px;
+            font-weight: 600;
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links a {
+            color: rgba(255, 255, 255, 0.7);
+            text-decoration: none;
+            display: block;
+            margin-bottom: 12px;
+            font-size: 15px;
+            transition: color 0.3s ease;
+            font-weight: 300;
+        }
+
+        .footer-links a:hover {
+            color: var(--white);
+        }
+
+        .footer-bottom {
+            padding-top: 40px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 14px;
+        }
+
+        .footer-legal {
+            display: flex;
+            gap: 32px;
+        }
+
+        .footer-legal a {
+            color: rgba(255, 255, 255, 0.7);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-legal a:hover {
+            color: var(--white);
+        }
+
+        /* Responsive */
+        @media (max-width: 1200px) {
+            .container {
+                padding: 0 32px;
+            }
+
+            .article-title {
+                font-size: 52px;
+            }
+        }
+
+        @media (max-width: 968px) {
+            .nav-links {
+                display: none;
+            }
+
+            .article-title {
+                font-size: 40px;
+            }
+
+            .article-content h2 {
+                font-size: 32px;
+            }
+
+            .article-content h3 {
+                font-size: 26px;
+            }
+
+            .related-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr;
+                gap: 48px;
+            }
+
+            .footer-bottom {
+                flex-direction: column;
+                gap: 24px;
+                text-align: center;
+            }
+
+            .author-bio-content {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="container">
+            <div class="nav-content">
+                <a href="avocat.html" class="logo">
+                    <svg class="logo-icon" viewBox="0 0 24 24" fill="none">
+                        <path d="M12 2L4 5v6.09c0 5.05 3.41 9.76 8 10.91 4.59-1.15 8-5.86 8-10.91V5l-8-3z" stroke="currentColor" fill="none"/>
+                    </svg>
+                    Cornaciu
+                </a>
+                <ul class="nav-links">
+                    <li><a href="index.html#despre">Despre</a></li>
+                    <li><a href="index.html#experienta">Expertiza</a></li>
+                    <li><a href="index.html#abordare">Abordare</a></li>
+                    <li><a href="index.html#articole">Publicații</a></li>
+                    <li><a href="index.html#contact">Contact</a></li>
+                </ul>
+                <a href="index.html#contact" class="cta-nav">Consultație Gratuita</a>
+            </div>
+        </div>
+    </nav>
+
+    <article>
+        <header class="article-header">
+            <div class="container-narrow">
+                <div class="breadcrumb">
+                    <a href="index.html">Acasă</a>
+                    <span>/</span>
+                    <a href="index.html#articole">Publicații</a>
+                    <span>/</span>
+                    <span>Articol</span>
+                </div>
+                
+                <div class="article-meta-top">
+                    <span class="article-category">Drept Civil</span>
+                    <span class="article-date">15 Septembrie 2025</span>
+                    <span class="article-reading-time">8 min lectură</span>
+                </div>
+
+                <h1 class="article-title">Modificări Recente în Codul Civil: Implicații Practice</h1>
+                
+                <p class="article-excerpt">Analiză detaliată a recentelor amendamente legislative și impactul acestora asupra practicii contractuale în domeniul civil și comercial, cu recomandări pentru profesioniști și întreprinderi.</p>
+
+                <div class="article-author">
+                    <div class="author-avatar">AV</div>
+                    <div class="author-info">
+                        <span class="author-name">Avocat Specialist</span>
+                        <span class="author-title">Partener, Cornaciu</span>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <div class="article-body">
+            <div class="container-narrow">
+                <div class="article-featured-image">
+                    Imagine Principală Articol
+                </div>
+
+                <div class="article-content">
+                    <p>Modificările recente aduse Codului Civil prin Legea nr. XXX/2025 reprezintă o evoluție semnificativă a cadrului legal românesc, cu implicații profunde asupra practicii juridice din domeniul contractual. Aceste amendamente reflectă necesitatea adaptării legislației la realitățile economice contemporane și la jurisprudența comunitară europeană.</p>
+
+                    <p>În contextul unui mediu de afaceri din ce în ce mai complex, legiuitorul a identificat nevoia unei clarificări a anumitor aspecte procedurale și substantive care generau incertitudine juridică. Prezenta analiză examinează principalele modificări legislative și oferă o perspectivă practică asupra modului în care acestea vor influența raporturile juridice civile.</p>
+
+                    <h2>Context Legislative și Fundamentare</h2>
+
+                    <p>Procesul de modificare a Codului Civil a fost inițiat ca răspuns la dificultățile întâmpinate în aplicarea practică a anumitor dispoziții legale. Consultările extinse cu practicienii din domeniu, academia juridică și reprezentanții mediului de afaceri au evidențiat necesitatea unor intervenții legislative punctuale pentru a asigura coerența și predictibilitatea cadrului normativ.</p>
+
+                    <p>Modificările se înscriu într-un proces mai amplu de armonizare cu acquis-ul comunitar și reflectă cele mai recente evoluții din jurisprudența Curții de Justiție a Uniunii Europene în materie civilă. Legiuitorul român a căutat să realizeze un echilibru între menținerea specificului sistemului juridic național și integrarea standardelor europene în domeniu.</p>
+
+                    <div class="key-takeaways">
+                        <h3>Aspecte Esențiale</h3>
+                        <ul>
+                            <li>Modificările consolidează securitatea tranzacțiilor comerciale prin clarificarea regimului juridic al contractelor</li>
+                            <li>Se introduce o reglementare mai detaliată a clauzelor abuzive în raporturile dintre profesioniști și consumatori</li>
+                            <li>Sunt clarificate aspectele referitoare la răspunderea contractuală și extracontractuală</li>
+                            <li>Se simplifică procedurile de executare silită pentru anumite categorii de creanțe</li>
+                            <li>Este îmbunătățit cadrul legal privind prescripția achizitivă și extinctivă</li>
+                        </ul>
+                    </div>
+
+                    <h2>Principalele Modificări Legislative</h2>
+
+                    <h3>Regimul Contractelor Civile</h3>
+
+                    <p>Una dintre cele mai semnificative intervenții legislative se referă la regimul general al contractelor civile. Noua reglementare clarifică condițiile de validitate a contractelor și introduce dispoziții exprese privind momentul formării acordului de voință în contextul comunicărilor electronice.</p>
+
+                    <p>În plus, legiuitorul a introdus reglementări detaliate privind obligația de informare precontractuală, extinzând aplicabilitatea acesteia dincolo de raporturile tradiționale consumator-profesionist. Această extindere răspunde necesității de a asigura transparența și echitatea în toate tipurile de raporturi contractuale, indiferent de calitatea părților implicate.</p>
+
+                    <blockquote>
+                        "Modificările aduse Codului Civil reprezintă un pas semnificativ către modernizarea cadrului juridic românesc și consolidarea securității juridice în tranzacțiile comerciale."
+                    </blockquote>
+
+                    <h3>Protecția Consumatorilor</h3>
+
+                    <p>Amendamentele legislative acordă o atenție deosebită consolidării mecanismelor de protecție a consumatorilor. Noua reglementare extinde lista clauzelor considerate abuzive și introduce sancțiuni mai severe pentru profesionișii care utilizează astfel de clauze în contractele cu consumatorii.</p>
+
+                    <p>De asemenea, sunt clarificate procedurile de contestare a clauzelor abuzive și sunt stabilite termene mai clare pentru exercitarea drepturilor consumatorilor. Aceste modificări răspund cerințelor directivelor europene recente în domeniu și consolidează alinierea legislației naționale la standardele comunitare.</p>
+
+                    <h3>Răspunderea Civilă</h3>
+
+                    <p>Un alt aspect important vizează regimul răspunderii civile, atât contractuale cât și delictuale. Modificările clarifică condițiile angajării răspunderii și introduc criterii mai precise pentru evaluarea prejudiciului. Legiuitorul a căutat să ofere o bază mai solidă pentru soluționarea litigiilor în acest domeniu și să reducă incertitudinea jurisprudențială existentă.</p>
+
+                    <p>În materia răspunderii contractuale, sunt precizate aspectele legate de forța majoră și cazul fortuit, ținând cont de contextul economic actual și de situații excepționale care pot afecta executarea obligațiilor contractuale. Aceste clarificări sunt deosebit de importante în contextul economic actual, caracterizat de volatilitate și evenimente imprevizibile.</p>
+
+                    <h2>Implicații Practice pentru Profesioniști</h2>
+
+                    <p>Pentru practicienii dreptului, aceste modificări impun o reevaluare a strategiilor contractuale și a practicilor de redactare a actelor juridice. Este esențial ca avocații și consilierii juridici să fie familiarizați cu noile dispoziții pentru a putea oferi clienților consultanță adecvată și pentru a preveni potențiale litigii.</p>
+
+                    <p>Întreprinderile trebuie să își revizuiască contractele standard și să se asigure că acestea sunt conforme cu noile cerințe legislative. Acest proces de conformare necesită o analiză atentă a practicilor contractuale existente și, în multe cazuri, o revizuire substanțială a documentației contractuale utilizate.</p>
+
+                    <h3>Recomandări pentru Practicieni</h3>
+
+                    <p>În lumina acestor modificări legislative, recomandăm următoarele acțiuni pentru practicienii din domeniu:</p>
+
+                    <ul>
+                        <li>Revizuirea tuturor contractelor standard și a clauzelor utilizate în mod curent în practică</li>
+                        <li>Formarea continuă a echipelor juridice privind implicațiile noilor dispoziții legislative</li>
+                        <li>Implementarea unor proceduri de verificare a conformității contractuale cu noile cerințe</li>
+                        <li>Consultarea specializată pentru situații juridice complexe care implică aplicarea noilor norme</li>
+                        <li>Monitorizarea jurisprudenței emergente în aplicarea noilor dispoziții legislative</li>
+                    </ul>
+
+                    <h2>Perspective și Concluzii</h2>
+
+                    <p>Modificările aduse Codului Civil reprezintă o evoluție pozitivă a cadrului legal românesc, contribuind la consolidarea securității juridice și la adaptarea legislației la realitățile economice contemporane. Deși implementarea acestor schimbări va necesita un efort semnificativ din partea profesioniștilor din domeniu, beneficiile pe termen lung vor fi substanțiale.</p>
+
+                    <p>În perioada imediat următoare intrării în vigoare a noilor dispoziții, ne așteptăm la apariția unor chestiuni interpretative care vor necesita clarificări jurisprudențiale. Este esențial ca practicienii să abordeze aceste situații cu prudență și să urmărească atent evoluțiile din jurisprudență pentru a putea oferi clienților consultanță actualizată și precisă.</p>
+
+                    <p>Cabinetul nostru rămâne la dispoziția clienților pentru orice clarificări sau asistență juridică necesară în contextul noilor reglementări. Monitorizăm constant evoluțiile legislative și jurisprudențiale pentru a putea oferi servicii juridice de cea mai înaltă calitate, adaptate la contextul legal actual.</p>
+                </div>
+
+                <div class="article-footer">
+                    <div class="article-tags">
+                        <span class="tag-label">Etichete:</span>
+                        <a href="#" class="tag">Drept Civil</a>
+                        <a href="#" class="tag">Cod Civil</a>
+                        <a href="#" class="tag">Legislație</a>
+                        <a href="#" class="tag">Contracte</a>
+                        <a href="#" class="tag">Drept Comercial</a>
+                    </div>
+
+                    <div class="article-share">
+                        <span class="share-label">Distribuie Articolul:</span>
+                        <div class="share-buttons">
+                            <a href="#" class="share-button" title="LinkedIn">in</a>
+                            <a href="#" class="share-button" title="Twitter">𝕏</a>
+                            <a href="#" class="share-button" title="Facebook">f</a>
+                            <a href="#" class="share-button" title="Email">✉</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="author-bio">
+                    <div class="author-bio-content">
+                        <div class="author-bio-avatar">AV</div>
+                        <div class="author-bio-text">
+                            <h4>Avocat Specialist</h4>
+                            <p class="author-bio-title">Partener, Cornaciu</p>
+                            <p>Cu peste 15 ani de experiență în domeniul dreptului civil și comercial, oferă consultanță juridică specializată și reprezentare în instanță pentru clienți corporativi și individuali. Expert în litigii complexe și tranzacții comerciale de anvergură.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </article>
+
+    <section class="related-articles">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-label">Lectură Suplimentară</span>
+                <h2 class="section-title">Articole Conexe</h2>
+            </div>
+            <div class="related-grid">
+                <a href="#" class="related-card">
+                    <div class="related-image">Imagine Articol</div>
+                    <div class="related-content">
+                        <div class="related-meta">
+                            <span class="related-date">10 Septembrie 2025</span>
+                            <span class="related-category">Drept Muncii</span>
+                        </div>
+                        <h3>Jurisprudență Relevantă în Litigii de Muncă</h3>
+                    </div>
+                </a>
+                <a href="#" class="related-card">
+                    <div class="related-image">Imagine Articol</div>
+                    <div class="related-content">
+                        <div class="related-meta">
+                            <span class="related-date">5 Septembrie 2025</span>
+                            <span class="related-category">Drept Imobiliar</span>
+                        </div>
+                        <h3>Aspecte Juridice în Tranzacții Imobiliare Complexe</h3>
+                    </div>
+                </a>
+                <a href="#" class="related-card">
+                    <div class="related-image">Imagine Articol</div>
+                    <div class="related-content">
+                        <div class="related-meta">
+                            <span class="related-date">1 Septembrie 2025</span>
+                            <span class="related-category">Drept Comercial</span>
+                        </div>
+                        <h3>Regimul Juridic al Societăților Comerciale în România</h3>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <section class="article-cta">
+        <div class="container-narrow">
+            <h2>Aveți Nevoie de Consultanță Juridică?</h2>
+            <p>Contactați-ne pentru o evaluare profesională a situației dumneavoastră juridice și pentru a primi asistență specializată.</p>
+            <a href="index.html#contact" class="cta-button">Programare Consultație</a>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <h3>Cornaciu</h3>
+                    <p>Servicii juridice de excelență, fundamentate pe experiență vastă, integritate profesională și dedicare absolută către interesele fiecărui client.</p>
+                </div>
+                <div class="footer-column">
+                    <h4>Navigare</h4>
+                    <ul class="footer-links">
+                        <li><a href="index.html#despre">Despre Cabinet</a></li>
+                        <li><a href="index.html#experienta">Expertiza</a></li>
+                        <li><a href="index.html#abordare">Abordare</a></li>
+                        <li><a href="index.html#articole">Publicații</a></li>
+                        <li><a href="index.html#contact">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h4>Servicii</h4>
+                    <ul class="footer-links">
+                        <li><a href="index.html#experienta">Drept Civil</a></li>
+                        <li><a href="index.html#experienta">Drept Comercial</a></li>
+                        <li><a href="index.html#experienta">Drept Familiei</a></li>
+                        <li><a href="index.html#experienta">Drept Imobiliar</a></li>
+                        <li><a href="index.html#experienta">Drept Muncii</a></li>
+                        <li><a href="index.html#experienta">Drept Penal</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h4>Legal</h4>
+                    <ul class="footer-links">
+                        <li><a href="#">Politica de Confidențialitate</a></li>
+                        <li><a href="#">Termeni și Condiții</a></li>
+                        <li><a href="#">Conformitate GDPR</a></li>
+                        <li><a href="#">Cod Deontologic</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Cornaciu. Toate drepturile rezervate. Website realizat de <a style="color: gray" href="https://designerultau.ro">DesignerulTau.ro</a></p>
+                <div class="footer-legal">
+                    <a href="#">Politica de Confidențialitate</a>
+                    <a href="#">Termeni și Condiții</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scroll for navigation
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    const offset = 80;
+                    const targetPosition = target.offsetTop - offset;
+                    window.scrollTo({
+                        top: targetPosition,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // Navbar scroll effect
+        const navbar = document.querySelector('nav');
+        let lastScroll = 0;
+
+        window.addEventListener('scroll', () => {
+            const currentScroll = window.pageYOffset;
+            
+            if (currentScroll > 100) {
+                navbar.style.padding = '0px 0';
+                navbar.style.boxShadow = '0 4px 20px rgba(0,0,0,0.08)';
+            } else {
+                navbar.style.padding = '0px 0';
+                navbar.style.boxShadow = 'none';
+            }
+            
+            lastScroll = currentScroll;
+        });
+
+        // Reading progress bar (optional enhancement)
+        const createProgressBar = () => {
+            const progressBar = document.createElement('div');
+            progressBar.style.cssText = `
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 0%;
+                height: 3px;
+                background: var(--secondary);
+                z-index: 9999;
+                transition: width 0.1s ease;
+            `;
+            document.body.appendChild(progressBar);
+
+            window.addEventListener('scroll', () => {
+                const windowHeight = window.innerHeight;
+                const documentHeight = document.documentElement.scrollHeight - windowHeight;
+                const scrolled = window.scrollY;
+                const progress = (scrolled / documentHeight) * 100;
+                progressBar.style.width = progress + '%';
+            });
+        };
+
+        createProgressBar();
+    </script>
+</body>
+</html>
